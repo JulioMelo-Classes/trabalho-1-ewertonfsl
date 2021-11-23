@@ -4,10 +4,14 @@
 class Forca {
     public:
         enum Dificuldade{
-            FACIL, MEDIO, DIFICIL
+            FACIL = 1, MEDIO, DIFICIL
         };
     private:
-        //TODO: armazenar os scores?
+        std::string nome_jogador; //<! nome do jogador 
+
+        int pontos = 0; //<! pontuação do jogador
+
+        std::vector< std::string > corretas; //<! palavras acertadas 
        
         std::vector< std::pair<std::string, int> > m_palavras; //<! palavras e sua ocorrência no Corpus
  
@@ -22,6 +26,8 @@ class Forca {
         int m_tentativas_restantes = 6; //<! tentativas restantes
    
     public:
+        Forca();
+
         /**
          * Cria a classe Forca
          * O construtor pode ou não validar os arquivos de entrada, no entanto, mesmo com 
@@ -45,16 +51,7 @@ class Forca {
         /**
          * Carrega os arquivos de scores e palavras preenchendo **ao menos** a estrutura m_palavras
          */
-        void carrega_arquivos();
- 
-        /**
-         * Modifica a dificuldade do jogo.
-         * De acordo com a dificuldade configurada, o método proxima_palavra retornará palavras
-         * diferentes.
-         * @param d a dificuldade desejada
-         * @see proxima_palavra
-         */
-        void set_dificuldade(Dificuldade d);
+        void carrega_arquivos( std::string palavras, std::string scores );
  
         /**
          * Retorna a próxima palavra de acordo com a dificuldade atual.
@@ -63,7 +60,7 @@ class Forca {
          * letras que devem aparecer dependendo do nível de dificuldade.
          * @return a próxima palavra do conjunto de palavras disponível de acordo com a dificuldade atual.
          */
-        std::string proxima_palavra();
+        std::string proxima_palavra( Dificuldade d );
  
         /**
          * Retorna a palavra atual que está sendo jogada.
@@ -99,5 +96,24 @@ class Forca {
          * @return a quantidade de tentativas restantes.
          */
         int get_tentativas_restantes();
+
+        /**
+         * Atualiza a pontuação.
+         * @param pontos 
+         */
+        void set_pontos( int pontos );
+
+        /**
+         * Retorna a pontuação.
+         * @return a pontuação. 
+         */
+        int get_pontos();
+
+        /**
+         * Exibe linhas que representam a quantidade de letras da palavra e encaixa nelas os palpites corretos.
+         * @param palpite letra que o jogador considera pertencer à palavra.
+         * @return linhas que representam a quantidade de letras da palavra e os palpites corretos. 
+         */
+        std::string linhas( std::string palpite );
  
 };
