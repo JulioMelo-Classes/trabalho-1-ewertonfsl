@@ -1,7 +1,7 @@
 ## Como compilar o projeto (em ambiente Linux)
 1. Pelo terminal, vá até a pasta do projeto, por exemplo:
 ```
-cd Downloads/trabalho-1-ewerton-lima
+cd Downloads/trabalho-1-ewertonfsl-master
 ```
 2. Crie e entre na pasta build:
 ```
