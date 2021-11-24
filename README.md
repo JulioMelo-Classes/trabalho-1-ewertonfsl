@@ -48,8 +48,6 @@ usuário.
 
 5. algumas regras de pontuação.
 
-7. nada feito.
-
 8.a) atualizar informações do jogo no arquivo de scores.
 
 9. nada feito.
