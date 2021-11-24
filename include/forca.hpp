@@ -11,6 +11,8 @@ class Forca {
 
         int pontos = 0; //<! pontuação do jogador
 
+        int acertos = 0;
+
         std::vector< std::string > corretas; //<! palavras acertadas 
        
         std::vector< std::pair<std::string, int> > m_palavras; //<! palavras e sua ocorrência no Corpus
@@ -115,5 +117,10 @@ class Forca {
          * @return linhas que representam a quantidade de letras da palavra e os palpites corretos. 
          */
         std::string linhas( std::string palpite );
+
+        void set_acertos( int acertos );
  
+        int get_acertos();
+
+        bool acertou();
 };

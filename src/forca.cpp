@@ -221,6 +221,16 @@ int Forca::get_pontos()
     return pontos;
 }
 
+void Forca::set_acertos( int acertos_ )
+{
+    acertos = acertos_;
+}
+
+int Forca::get_acertos()
+{
+    return acertos;
+}
+
 /**
  * Exibe linhas que representam a quantidade de letras da palavra e encaixa nelas os palpites corretos.
  * @param palpite letra que o jogador considera pertencer à palavra.
@@ -243,16 +253,24 @@ string Forca::linhas( string palpite_ )
         for ( auto i = 0; i < m_palavra_atual.length(); i ++ )
         {
             caracteres += "_ ";
-
+        
             if ( m_palavra_atual[i] == palpite[0] )
             {
                 caracteres[i] = m_palavra_atual[i];
             }        
         }
-        
-
     }
 
     cout << caracteres << endl;
     return caracteres;
+}
+
+bool Forca::acertou( )
+{
+    if ( acertos == m_palavra_atual.length() ){
+        corretas.push_back( m_palavra_atual );
+        return true;
+    }
+    else
+        return false;
 }

@@ -94,13 +94,24 @@ void cabecalhoDificuldade( int *dificuldade ) {
         cout << "Iniciando o Jogo no nível difícil, será que você conhece essa palavra?" << endl;    
 }
 
+void opcaoContinuar( int *opcaoContinue ) {
+    cout << "1 - Continuar" << endl;
+    cout << "2 - Parar" << endl;
+
+    cin >> *opcaoContinue;
+}
+
 /**
  * @brief Método responsável pelo jogo em si.
  */
 void iniciaJogo ( Forca carregar, int *dificuldade )
 {
     vector<string> chutes; //<! palpites já feitos
+
     string palpite;
+
+    int acertos = 0;
+    int opcaoContinue;
 
     carregar.set_tentativas_restantes(6);
 
@@ -124,7 +135,9 @@ void iniciaJogo ( Forca carregar, int *dificuldade )
         {
             // Se é um palpite correto, exibe mensagem de acerto, adiciona a pontuação.  
             if ( carregar.palpite( palpite ) ) 
-            {    
+            {   
+                carregar.set_acertos( carregar.get_acertos() + 1 );
+
                 limpaTela();
 
                 cout << "Muito bem! A palavra contém a letra " <<  maiuscula( palpite ) << "!" << endl;
@@ -136,6 +149,42 @@ void iniciaJogo ( Forca carregar, int *dificuldade )
 
                 cout << "Pontos: " << carregar.get_pontos() << endl;
                 cout << "Palpite: ";
+
+                if ( carregar.acertou() )
+                {
+                    cout << endl << endl << "Parabéns, você acertou!" << endl;
+                    cout << "Deseja continuar ou parar?" << endl << endl;
+
+                    opcaoContinuar( &opcaoContinue );
+
+                    if ( opcaoContinue == 1 ) 
+                    {
+                        chutes.clear();
+                        palpite.clear();
+                        carregar.set_acertos( 0 );
+
+                        limpaTela();
+
+                        cabecalhoDificuldade( dificuldade );
+                        
+                        corpo( carregar );
+
+                        carregar.proxima_palavra( (Forca::Dificuldade)*dificuldade );
+                        
+                        carregar.linhas( palpite );
+                        
+                        cout << "Pontos: " << carregar.get_pontos() << endl;
+                        cout << "Palpite: ";                      
+                    }
+
+                    if ( opcaoContinue == 2 )
+                    {
+                        limpaTela();
+
+                        cout << "Obrigado por jogar!" << endl << endl;
+                        exit(1);
+                    }
+                }
 
             }
             // Se é um palpite errado, exibe mensagem de erro, subtrai a pontuação.
@@ -165,6 +214,9 @@ void iniciaJogo ( Forca carregar, int *dificuldade )
     {
         cout << endl << "O jogo acabou, a palvra era ";
         carregar.get_palavra_atual();
+
+        cout << "Obrigado por jogar!" << endl << endl;
+        exit(1);
     }
 }
 
