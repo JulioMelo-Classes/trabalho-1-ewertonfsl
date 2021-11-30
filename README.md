@@ -55,3 +55,38 @@ usuário.
 
 ## Limitações
 Tive problemas em conciliar o projeto com as outras disciplinas e o trabalho, demorei um pouco para pegar o ritmo.
+
+# Avaliação
+
+## Código | Funcionalidades
+1. Classe forca 10/10
+
+2. Interface textual 10/10
+
+3. Execução completa do jogo 6/15
+- Faltaram sortear as consoantes/vogais
+- A forma como você implementou a dificuldade do jogo não é flexível em relação ao arquivo de entrada
+- As letras acertadas desaparecem quando o usuário palpita outra letra
+- Quando o usuário digita uma letra que já foi jogada, o jogo não avisa qualquer coisa
+
+4. Validação dos arquivos de texto 3/5
+- A validação está ok, vou considerar
+
+5. Arquivos de teste de validação dos casos de erro 5/5
+
+6. Arquivos de teste de validação dos níveis de dificuldade 3/5
+- Blz, a ideia aqui era que vc adicionasse arquivos de palavras para testar o game over de cada nível, mas vc
+adicionou mais de um arquivo de palavras o que já é um começo.
+
+7. Observações gerais
+
+## Código | Boas práticas
+
+1. Documentação do código e readme 5/10
+- Os métodos/funções implementadas não foram documentados
+
+2. Organização e indentação 5/10
+- Acho que vc poderia criar mais um .hpp pelo menos para modularizar melhor o main
+
+3. Compilação automatizada 5/5
+
